@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: near-nft-backend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NEAR_RPC_URL
+        value: https://rpc.testnet.near.org
