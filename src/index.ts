@@ -25,6 +25,7 @@ function normalizeToken(token: any, contractId: string): NormalizedNFT {
   };
 }
 
+
 // post route
 
 app.post("/check-wallet", async (req, res) => {
@@ -37,7 +38,7 @@ app.post("/check-wallet", async (req, res) => {
   const walletId = body.walletId.trim();
 
   //check wallet existence
-  
+
   const exists = await walletExists(walletId);
   if (!exists) {
     const payload: CheckWalletResponse = { exists: false, nfts: [] };
@@ -67,6 +68,11 @@ app.post("/check-wallet", async (req, res) => {
 
   const payload: CheckWalletResponse = { exists: true, nfts: all };
   return res.json(payload);
+});
+
+
+app.get("/", (req, res) => {
+  res.send("Welcome to NEAR NFT API");
 });
 
 const port = Number(process.env.PORT || 4000);
